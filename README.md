@@ -22,6 +22,30 @@ For testing I would use PyTest, it is an open-source Python-based testing framew
 
 For building one option could be BuildMaster by using pip freeze you can list all your installed modules and their version and once the production build is completed, an "artifact" will be created ready for deployment.
 
+## What alternatives are there to set up the CI besides Jenkins and GitHub Actions?
+
+- Drone.io
+- Atlassian Bamboo
+- CircleCI
+- Travis CI
+- BuildMaster
+- Buddy
+
+## Would this setup be better in a self-hosted or a cloud-based environment? Why? What information would you need to make that decision?
+
+I would choose a cloud-based environment, it has several advantages such as:
+
+- The implementation of CI/CD can be significantly faster and more customizable for users thanks to the steps and integrations that already exist in cloud-based solutions.
+
+- Building proper infrastructure for a self-hosted solution, such as a modern data center, can take months. Hardware also has to be replaced every few years to meet performance and security requirements.
+
+- In most cases, self-hosted CI/CD tools come with new hiring needs. Cloud-based services offer a high level of support and onboarding assistance, so you do not have to worry about having to boost your headcount.
+
+- Network administration, reporting, and migrating data from the previous platform are all time-consuming tasks, and all make the installation of a self-hosted system a much longer process.
+
+- In case of an on-premise system, recovering from downtime, backtracking codes, fixing bugs, and other blocks in the CI/CD pipeline mechanics usually require more time, resources, and personnel.
+
+
 ## Commands
 
 Start by running `npm install` inside the project folder
