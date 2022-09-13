@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '16'
       - name: Install dependencies 
-        run: npm install  
+        run: npm ci  
       - name: Run lint
         run: npm run eslint
       - name: Build
@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.36.0
+        uses: anothrNick/github-tag-action@1.40.0
         env:
           GITHUB_TOKEN: ${{ github.token }}
           DEFAULT_BUMP: patch
