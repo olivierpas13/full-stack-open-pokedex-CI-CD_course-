@@ -40,7 +40,14 @@ jobs:
           healthcheck: "https://cicdaplicacion.herokuapp.com/health"
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
-    
+      
+      - name: Deployment succeeded
+        if: ${{ sucess()}}
+        with:
+          severity: info
+          details: Test Succeeded!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+   
   tag_release:
     name: Versioning
     needs: [simple_deployment_pipeline]
