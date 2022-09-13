@@ -72,4 +72,4 @@ jobs:
         COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
       run: echo "$COMMIT_MESSAGES"
     - name: test
-      run: contains("#skip"), github.event.commits.*.message) 
+      run: ${{contains("#skip"), github.event.commits.*.message)}} 
