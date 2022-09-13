@@ -46,7 +46,9 @@ jobs:
         if: success()
         with:
           severity: info
-          details: Test Succeeded!
+          text: A new version of Pokedex deployed
+          description: to https://cicdaplicacion.herokuapp.com/ by olivierpas13.
+          footer: 'Severity: Informational'
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
    
   tag_release:
