@@ -42,6 +42,7 @@ jobs:
           rollbackonhealthcheckfailed: true
       
       - name: Deployment succeeded
+        uses: rjstone/discord-webhook-notify@v1
         if: ${{ sucess()}}
         with:
           severity: info
