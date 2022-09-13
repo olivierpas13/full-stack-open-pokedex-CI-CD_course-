@@ -43,7 +43,7 @@ jobs:
       
       - name: Deployment succeeded
         uses: rjstone/discord-webhook-notify@v1
-        if: ${{ sucess()}}
+        if: success()
         with:
           severity: info
           details: Test Succeeded!
