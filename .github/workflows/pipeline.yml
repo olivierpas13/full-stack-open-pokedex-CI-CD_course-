@@ -43,9 +43,9 @@ jobs:
     
   tag_release:
     name: Versioning
-    if: ${{ github.event_name == 'push' || !contains(join(github.event.commits.*.message, ' '), '#skip')}}
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-22.04
+    if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip')}}
     steps:
       - uses: actions/checkout@v3
         with:
