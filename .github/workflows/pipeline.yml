@@ -9,51 +9,51 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  simple_deployment_pipeline:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies 
-        run: npm ci  
-      - name: Run lint
-        run: npm run eslint
-      - name: Build
-        run: npm run build
-      - name: Testing
-        run: npm run test
-      - name: e2e tests
-        uses: cypress-io/github-action@v4
-        with:
-           build: npm run build
-           start: npm run start
-           wait-on: http://localhost:5000
-      - name: Deployment to heroku
-        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}   
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
-          healthcheck: "https://cicdaplicacion.herokuapp.com/health"
-          checkstring: "ok"
-          rollbackonhealthcheckfailed: true
+  # simple_deployment_pipeline:
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies 
+  #       run: npm ci  
+  #     - name: Run lint
+  #       run: npm run eslint
+  #     - name: Build
+  #       run: npm run build
+  #     - name: Testing
+  #       run: npm run test
+  #     - name: e2e tests
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #          build: npm run build
+  #          start: npm run start
+  #          wait-on: http://localhost:5000
+  #     - name: Deployment to heroku
+  #       uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+  #       with:
+  #         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+  #         heroku_app_name: ${{secrets.HEROKU_APP_NAME}}   
+  #         heroku_email: ${{secrets.HEROKU_EMAIL}}
+  #         healthcheck: "https://cicdaplicacion.herokuapp.com/health"
+  #         checkstring: "ok"
+  #         rollbackonhealthcheckfailed: true
     
-  tag_release:
-    name: Versioning
-    if: ${{ github.event_name == 'push' }}
-    needs: [simple_deployment_pipeline]
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: '0'
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.40.0
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          DEFAULT_BUMP: patch
+  # tag_release:
+  #   name: Versioning
+  #   if: ${{ github.event_name == 'push' }}
+  #   needs: [simple_deployment_pipeline]
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: '0'
+  #     - name: Bump version and push tag
+  #       uses: anothrNick/github-tag-action@1.40.0
+  #       env:
+  #         GITHUB_TOKEN: ${{ github.token }}
+  #         DEFAULT_BUMP: patch
 
   a_test_job:
     runs-on: ubuntu-20.04
@@ -72,4 +72,4 @@ jobs:
         COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
       run: echo "$COMMIT_MESSAGES"
     - name: test
-      run: contains(fromJson('["#skip"]'), github.event.commits.*.message) 
+      run: contains("#skip"), github.event.commits.*.message) 
