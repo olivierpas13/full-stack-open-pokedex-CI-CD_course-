@@ -30,8 +30,8 @@ jobs:
            build: npm run build
            start: npm run start
            wait-on: http://localhost:5000
-        if: ${{!contains(join(github.event.commits.*.message, ' '), '#skip')}}
       - name: Deployment to heroku
+        if: ${{!contains(join(github.event.commits.*.message, ' '), '#skip')}}
         uses: akhileshns/heroku-deploy@v3.12.12 
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
