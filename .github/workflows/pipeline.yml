@@ -51,15 +51,15 @@ jobs:
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
       
-      - name: Deployment succeeded
-        uses: rjstone/discord-webhook-notify@v1
-        if: success()
-        with:
-          severity: info
-          text: A new version of Pokedex deployed
-          description: to https://cicdaplicacion.herokuapp.com/ by olivierpas13.
-          footer: 'Severity: Informational'
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      # - name: Deployment succeeded
+      #   uses: rjstone/discord-webhook-notify@v1
+      #   if: success()
+      #   with:
+      #     severity: info
+      #     text: A new version of Pokedex deployed
+      #     description: to https://cicdaplicacion.herokuapp.com/ by olivierpas13.
+      #     footer: 'Severity: Informational'
+      #     webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
    
   tag_release:
     name: Versioning
