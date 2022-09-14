@@ -1,12 +1,13 @@
 name: Periodic health check
 
 on:
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
 
-  # schedule:
-  #   - cron: '21 * * * *'
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '*/10 * * * *'
 
 jobs:
   healthcheck:
