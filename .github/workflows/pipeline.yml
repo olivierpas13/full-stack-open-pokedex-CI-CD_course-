@@ -24,7 +24,7 @@ jobs:
         run: npm run build
       - name: Deployment succeeded
         uses: rjstone/discord-webhook-notify@v1
-        if: error()
+        if: failure()
         with:
           severity: error
           text: Build failed
